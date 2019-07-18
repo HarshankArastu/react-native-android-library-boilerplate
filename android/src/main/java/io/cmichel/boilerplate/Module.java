@@ -96,7 +96,7 @@ public class Module extends ReactContextBaseJavaModule {
   @ReactMethod
   public void getData() {
 
-
+          allIpList = new ArrayList<>();
 
           RxDnssd rxdnssd = new RxDnssdBindable(getReactApplicationContext());
 
