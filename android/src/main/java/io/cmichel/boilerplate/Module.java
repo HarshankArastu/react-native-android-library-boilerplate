@@ -30,6 +30,8 @@ import org.json.JSONObject;
 
 import org.json.JSONException;
 
+import java.util.*;
+
 public class Module extends ReactContextBaseJavaModule {
 
   private static final String DURATION_SHORT_KEY = "SHORT";
@@ -46,6 +48,7 @@ public class Module extends ReactContextBaseJavaModule {
 
   public Module(ReactApplicationContext reactContext) {
     super(reactContext);
+    getData();
   }
 
   @Override
@@ -137,6 +140,11 @@ public class Module extends ReactContextBaseJavaModule {
       @ReactMethod
       public void getBonjourDevicesList(Promise promise){
 
+
+        Set<BonjorDevice> set = new HashSet<>(allIpList);
+        allIpList.clear();
+        allIpList.addAll(set);
+
         JSONArray ja = new JSONArray();
         for(int i = 0; i < allIpList.size();i++){
           try {
@@ -149,6 +157,14 @@ public class Module extends ReactContextBaseJavaModule {
                   //some exception handler code.
               }
         }
+
+
+
+
+
+
+
+
 
         promise.resolve(ja.toString());
 
